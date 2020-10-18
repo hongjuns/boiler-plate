@@ -2,5 +2,4 @@
 node_modules
 dist
 lib
-config
-config/dev.js
+config/devkey.js
