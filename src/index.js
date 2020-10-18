@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const mongodbUser = require('../lib/mongodbUser');
+const config = require('../config/key');
 const app = express();
 const port = 3000
 
@@ -10,7 +11,9 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-mongoose.connect(mongodbUser.mongodbUrl, {
+console.log(config.mongoURI)
+
+mongoose.connect(config.mongoURI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
