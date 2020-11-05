@@ -83,8 +83,16 @@ app.get('/api/users/auth', auth , (req,res) => {
     lastname : req.user.lastname,
     role : req.user.role,
     image : req.user.image
+  })
+});
 
-
+//Logout Api
+app.get('/api/users/logout', auth , (req,res) => {
+  User.findByIdAndUpdate({_id:req.user.id}, {token : "" , name :"update" }, (err,user) => {
+    if (err) return res.json({ success :false, err});
+    return res.status(200).send({
+      success : true
+    })
   })
 });
 
